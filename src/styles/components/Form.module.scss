@@ -1,0 +1,198 @@
+@import "../variables.scss";
+
+.form {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #111827;
+    text-align: center;
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #111827;
+  }
+
+  &__input {
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+
+    &:disabled {
+      background-color: #f3f4f6;
+      cursor: not-allowed;
+    }
+
+    &::placeholder {
+      color: #9ca3af;
+    }
+  }
+
+  &__checkboxGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  &__checkbox {
+    width: 1rem;
+    height: 1rem;
+    accent-color: #4f46e5;
+    cursor: pointer;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &__checkboxLabel {
+    font-size: 0.875rem;
+    color: #111827;
+    cursor: pointer;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &__button {
+    padding: 1rem;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    &:hover:not(:disabled) {
+      background-color: #4338ca;
+      transform: translateY(-1px);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      background-color: #4338ca;
+    }
+  }
+
+  &__buttonSpinner {
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+  }
+
+  &__error {
+    color: #ef4444;
+    font-size: 0.875rem;
+    text-align: center;
+    margin-top: -0.5rem;
+  }
+
+  &__privacy {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  &__success {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__successIcon {
+    width: 3rem;
+    height: 3rem;
+    color: #10b981;
+  }
+
+  &__successTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #10b981;
+  }
+
+  &__successMessage {
+    font-size: 1rem;
+    color: #111827;
+    line-height: 1.5;
+  }
+
+  &__successButton {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #e5e7eb;
+    color: #111827;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: #d1d5db;
+    }
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
