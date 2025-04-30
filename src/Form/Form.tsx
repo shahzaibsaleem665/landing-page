@@ -54,9 +54,11 @@ export default function Form() {
             />
           </svg>
           <h3 className={styles.form__successTitle}>Thank you!</h3>
-          <p className={styles.form__successMessage}>
-            You've been added to our early access list. We'll be in touch soon!
+          <p className={styles.form__privacy}>
+            We respect your privacy. Your information is secure and will only be
+            used for communication related to early access.
           </p>
+
           <button
             onClick={() => setIsSuccess(false)}
             className={styles.form__successButton}

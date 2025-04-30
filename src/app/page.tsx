@@ -177,7 +177,9 @@ export default function Home() {
             <div className={styles.featureCard}>
               <div className={styles.featureIcon}>🕵️</div>
               <h3>Anonymous Chatting</h3>
-              <p>Stay anonymous until you're ready to reveal your identity</p>
+              <p>
+                Stay anonymous until you&rsquo;re ready to reveal your identity
+              </p>
             </div>
             <div className={styles.featureCard}>
               <div className={styles.featureIcon}>🔞</div>
