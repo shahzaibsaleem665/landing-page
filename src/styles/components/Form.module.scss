@@ -4,22 +4,22 @@
   max-width: 480px;
   margin: 0 auto;
   padding: 2rem;
-  background: white;
+  background: $white;
   border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 
   &__title {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: #111827;
+    color: $black;
     text-align: center;
   }
 
   &__subtitle {
     font-size: 1rem;
-    color: #6b7280;
+    color: $dark-gray;
     margin-bottom: 2rem;
     text-align: center;
   }
@@ -39,29 +39,30 @@
   &__label {
     font-size: 0.875rem;
     font-weight: 500;
-    color: #111827;
+    color: $black;
   }
 
   &__input {
     padding: 1rem;
-    border: 1px solid #e5e7eb;
+    border: 1px solid lighten($dark-gray, 40%);
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.2s ease;
+    background-color: $gray;
 
     &:focus {
       outline: none;
-      border-color: #4f46e5;
-      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+      border-color: $pink-color;
+      box-shadow: 0 0 0 3px rgba($pink-color, 0.1);
     }
 
     &:disabled {
-      background-color: #f3f4f6;
+      background-color: darken($gray, 5%);
       cursor: not-allowed;
     }
 
     &::placeholder {
-      color: #9ca3af;
+      color: lighten($dark-gray, 20%);
     }
   }
 
@@ -75,7 +76,7 @@
   &__checkbox {
     width: 1rem;
     height: 1rem;
-    accent-color: #4f46e5;
+    accent-color: $pink-color;
     cursor: pointer;
 
     &:disabled {
@@ -85,18 +86,27 @@
 
   &__checkboxLabel {
     font-size: 0.875rem;
-    color: #111827;
+    color: $black;
     cursor: pointer;
 
     &:disabled {
       cursor: not-allowed;
     }
+
+    a {
+      color: $pink-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   &__button {
     padding: 1rem;
-    background-color: #4f46e5;
-    color: white;
+    background-color: $pink-color;
+    color: $white;
     border: none;
     border-radius: 8px;
     font-size: 1rem;
@@ -107,10 +117,12 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    box-shadow: 0 2px 5px rgba($pink-color, 0.2);
 
     &:hover:not(:disabled) {
-      background-color: #4338ca;
+      background-color: darken($pink-color, 10%);
       transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba($pink-color, 0.3);
     }
 
     &:active:not(:disabled) {
@@ -120,7 +132,7 @@
     &:disabled {
       opacity: 0.7;
       cursor: not-allowed;
-      background-color: #4338ca;
+      background-color: darken($pink-color, 5%);
     }
   }
 
@@ -129,7 +141,7 @@
     height: 1rem;
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
-    border-top-color: white;
+    border-top-color: $white;
     animation: spin 1s ease-in-out infinite;
   }
 
@@ -142,9 +154,19 @@
 
   &__privacy {
     font-size: 0.75rem;
-    color: #6b7280;
+    color: $dark-gray;
     text-align: center;
     margin-top: 2rem;
+    line-height: 1.5;
+
+    a {
+      color: $pink-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   &__success {
@@ -153,31 +175,32 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    padding: 1rem;
   }
 
   &__successIcon {
     width: 3rem;
     height: 3rem;
-    color: #10b981;
+    color: $pink-color;
   }
 
   &__successTitle {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #10b981;
+    color: $pink-color;
   }
 
   &__successMessage {
     font-size: 1rem;
-    color: #111827;
+    color: $black;
     line-height: 1.5;
   }
 
   &__successButton {
     margin-top: 1rem;
     padding: 0.75rem 1.5rem;
-    background-color: #e5e7eb;
-    color: #111827;
+    background-color: $pink-color;
+    color: $white;
     border: none;
     border-radius: 8px;
     font-size: 0.875rem;
@@ -186,7 +209,7 @@
     transition: all 0.2s ease;
 
     &:hover {
-      background-color: #d1d5db;
+      background-color: darken($pink-color, 10%);
     }
   }
 }
