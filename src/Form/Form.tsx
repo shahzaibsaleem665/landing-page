@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { db } from "@/util/firebase";
+import { Timestamp } from "firebase/firestore"; // Import Timestamp
 import styles from "../styles/components/Form.module.scss";
 
 export default function Form() {
@@ -23,10 +24,23 @@ export default function Form() {
     setIsSubmitting(true);
 
     try {
+      // Check for existing email
+      const snapshot = await db
+        .collection("earlyAccess")
+        .where("email", "==", email)
+        .get();
+
+      if (!snapshot.empty) {
+        setError("This email is already registered.");
+        return;
+      }
+
+      // Add new submission with timestamp
       await db.collection("earlyAccess").add({
         name,
         email,
         isAdult,
+        submittedAt: Timestamp.now(), // Using Firestore timestamp
       });
       setIsSuccess(true);
     } catch (err) {
