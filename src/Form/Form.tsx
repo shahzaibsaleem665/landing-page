@@ -1,12 +1,13 @@
 "use client";
 import { useState } from "react";
 import { db } from "@/util/firebase";
-import { Timestamp } from "firebase/firestore"; // Import Timestamp
+import { Timestamp } from "firebase/firestore";
 import styles from "../styles/components/Form.module.scss";
 
 export default function Form() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [gender, setGender] = useState("");
   const [isAdult, setIsAdult] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -16,7 +17,7 @@ export default function Form() {
     e.preventDefault();
     setError("");
 
-    if (!name || !email || !isAdult) {
+    if (!name || !email || !gender || !isAdult) {
       setError("Please fill all fields and confirm you are 18+");
       return;
     }
@@ -24,7 +25,6 @@ export default function Form() {
     setIsSubmitting(true);
 
     try {
-      // Check for existing email
       const snapshot = await db
         .collection("earlyAccess")
         .where("email", "==", email)
@@ -35,12 +35,12 @@ export default function Form() {
         return;
       }
 
-      // Add new submission with timestamp
       await db.collection("earlyAccess").add({
         name,
         email,
+        gender,
         isAdult,
-        submittedAt: Timestamp.now(), // Using Firestore timestamp
+        submittedAt: Timestamp.now(),
       });
       setIsSuccess(true);
     } catch (err) {
@@ -116,6 +116,33 @@ export default function Form() {
                 placeholder="your@email.com"
                 disabled={isSubmitting}
               />
+            </div>
+
+            <div className={styles.form__group}>
+              <label htmlFor="gender" className={styles.form__label}>
+                Gender
+                <span className={styles.form__tooltip}>
+                  ⓘ
+                  <span className={styles.form__tooltipText}>
+                    We ask for your gender to help build a more inclusive and
+                    relevant experience during beta.
+                  </span>
+                </span>
+              </label>
+              <select
+                id="gender"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+                className={styles.form__input}
+                disabled={isSubmitting}
+              >
+                <option value="">Select gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="non-binary">Non-binary</option>
+                <option value="other">Other</option>
+                <option value="prefer-not-to-say">Prefer not to say</option>
+              </select>
             </div>
 
             <div className={styles.form__checkboxGroup}>

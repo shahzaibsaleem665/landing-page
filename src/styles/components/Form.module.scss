@@ -219,3 +219,34 @@
     transform: rotate(360deg);
   }
 }
+.form__tooltip {
+  margin-left: 0.4rem;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.form__tooltipText {
+  visibility: hidden;
+  width: 220px;
+  background-color: #222;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position above */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.75rem;
+}
+
+.form__tooltip:hover .form__tooltipText {
+  visibility: visible;
+  opacity: 1;
+}
