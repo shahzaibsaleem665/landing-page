@@ -472,3 +472,28 @@ $desktop: 1024px;
     flex-direction: column;
   }
 }
+.logoWrapper {
+  position: fixed;
+  top: 1.5rem;
+  left: 6%;
+  z-index: 1000;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.logo {
+  height: 5.5rem; // adjust size as needed
+  width: auto;
+}
+.logoVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.logoHidden {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}

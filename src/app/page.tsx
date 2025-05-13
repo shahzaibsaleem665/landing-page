@@ -4,7 +4,8 @@ import styles from "../styles/pages/page.module.scss";
 import { useEffect, useState } from "react";
 import { db } from "@/util/firebase";
 import firebase from "firebase/compat/app";
-
+import Image from "next/image";
+import logo from "../images/logo.png";
 export default function Home() {
   const [counters, setCounters] = useState({
     members: 130,
@@ -12,6 +13,23 @@ export default function Home() {
     dailySignups: 10,
   });
 
+  const [showLogo, setShowLogo] = useState(true);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        setShowLogo(true);
+      } else {
+        setShowLogo(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Run on mount in case the page is not at top initially
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   useEffect(() => {
     const unsubscribeTotal = db
       .collection("earlyAccess")
@@ -64,6 +82,13 @@ export default function Home() {
       <div className={styles.betaBadge}>
         <span>Beta Testing</span>
         <div className={styles.pulseDot}></div>
+      </div>
+      <div
+        className={`${styles.logoWrapper} ${
+          showLogo ? styles.logoVisible : styles.logoHidden
+        }`}
+      >
+        <Image src={logo} alt="Logo" className={styles.logo} />
       </div>
 
       <section className={`${styles.hero} ${styles.fullWidthSection}`}>
