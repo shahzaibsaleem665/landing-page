@@ -1,0 +1,24 @@
+@import "../variables.scss";
+
+.backToTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: $pink-color; // e.g., #f835a0;
+  border: none;
+  border-radius: 50%;
+  padding: 1rem;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($pink-color, 10%);
+  }
+
+  .icon {
+    color: $white; // e.g., #ffffff;
+    font-size: 1.5rem;
+  }
+}

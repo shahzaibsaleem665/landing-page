@@ -1,475 +1,589 @@
-@import "@/styles/variables";
+@import "../variables.scss";
 
-// Breakpoints
-$mobile: 480px;
-$tablet: 768px;
-$desktop: 1024px;
+$dark-bg: #0e0b16;
+$darker-bg: #0a0711;
+$accent-pink: #f835a0;
+$accent-purple: #4e148c;
+$accent-purple-light: #6a1fbc;
+$text-light: #f4f4f4;
+$text-muted: #999;
+$card-bg: #1e1528;
+$card-bg-dark: #1a1124;
 
-// Layout
-.main {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+.landingPage {
+  background: $dark-bg;
+  color: $text-light;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
 
-.fullWidthSection {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 5rem 0;
+  section {
+    padding: 6rem 1.5rem;
+    position: relative;
 
-  &:first-of-type {
-    padding-top: 7rem;
-  }
-
-  @media (max-width: $tablet) {
-    padding: 3rem 0;
-
-    &:first-of-type {
-      padding-top: 5rem;
+    @media (max-width: 768px) {
+      padding: 4rem 1rem;
     }
   }
 }
 
-.sectionContent {
-  width: 90%;
-  max-width: 90%;
-  margin: 0 auto;
-  padding: 0 1rem;
-
-  @media (max-width: $mobile) {
-    width: 95%;
-    padding: 0 0.5rem;
-  }
-}
-
-// Beta Badge
-.betaBadge {
-  position: fixed;
-  top: 1.5rem;
-  right: 5%;
-  background: $pink-color;
-  color: $white;
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  z-index: 1000;
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
-
-  @media (max-width: $tablet) {
-    right: 50%;
-    transform: translateX(50%);
-    top: 1rem;
-  }
-}
-
-.pulseDot {
-  width: 0.5rem;
-  height: 0.5rem;
-  background: $white;
-  border-radius: 50%;
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(0.95);
-    opacity: 0.8;
-  }
-}
-
-// Hero Section
+// Hero
 .hero {
-  background: $gray;
-}
+  background: linear-gradient(135deg, $accent-purple 0%, $dark-bg 100%);
+  padding: 8rem 2rem 6rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
 
-.heroGrid {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 3rem;
-  align-items: center;
-
-  @media (max-width: $desktop) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  &Content {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
   }
-}
 
-.heroContent {
-  order: 1;
+  &Heading {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, #fff 10%, $pink-color 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
-  @media (max-width: $desktop) {
-    order: 2;
+    span {
+      background: linear-gradient(
+        to right,
+        $accent-pink 0%,
+        lighten($accent-pink, 15%) 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
   }
-}
 
-.heroForm {
-  order: 2;
-
-  @media (max-width: $desktop) {
-    order: 1;
-  }
-}
-
-.heroTitle {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-
-  @media (max-width: $tablet) {
-    text-align: center;
-  }
-}
-
-.titleHighlight {
-  color: $pink-color;
-}
-
-.tagline {
-  font-size: 1.25rem;
-  color: $dark-gray;
-  margin-bottom: 2rem;
-  font-weight: 500;
-
-  @media (max-width: $tablet) {
-    font-size: 1.1rem;
-    text-align: center;
-  }
-}
-
-.verificationBanner {
-  background: $black;
-  border-left: 0.25rem solid $pink-color;
-  padding: 0.75rem 1rem;
-  border-radius: 0.25rem;
-  margin-bottom: 2rem;
-  display: inline-flex;
-
-  @media (max-width: $tablet) {
+  &Subheading {
+    font-size: 1.5rem;
+    color: rgba($text-light, 0.9);
+    margin-bottom: 3rem;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    display: flex;
+
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
   }
-}
 
-.verificationContent {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-  font-weight: 500;
-  color: $white;
-}
-
-.verificationIcon {
-  font-size: 1.25rem;
-}
-
-.heroSubtitle {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  color: $dark-gray;
-  font-weight: 500;
-
-  @media (max-width: $tablet) {
-    text-align: center;
+  &Pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      circle at 20% 50%,
+      rgba($accent-pink, 0.15) 0%,
+      transparent 30%
+    );
+    z-index: 1;
   }
-}
 
-.perksList {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 2.5rem;
-
-  li {
-    display: flex;
+  .cta {
+    background: linear-gradient(
+      to right,
+      $pink-color 0%,
+      lighten($pink-color, 10%) 100%
+    );
+    color: #fff;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-flex;
     align-items: center;
     gap: 0.75rem;
+    box-shadow: 0 4px 15px rgba($accent-pink, 0.4);
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 6px 20px rgba($accent-pink, 0.6);
+      transform: translateY(-2px);
+    }
+
+    &Icon {
+      transition: transform 0.3s ease;
+    }
+
+    &:hover &Icon {
+      transform: translateY(2px);
+    }
+  }
+
+  .ctaSubtext {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: rgba($text-light, 0.7);
+    font-style: italic;
+  }
+}
+
+// Stats
+.stats {
+  background: $darker-bg;
+  padding: 5rem 1rem;
+
+  &Container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &Heading {
+    font-size: 2.5rem;
+    text-align: center;
     margin-bottom: 1rem;
+    color: $text-light;
+    font-weight: 700;
+  }
+
+  &Subheading {
+    font-size: 1.2rem;
+    color: $text-muted;
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &Content {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+  }
+
+  .stat {
+    flex: 1;
+    min-width: 160px;
+    padding: 1.5rem;
+    background: rgba($accent-purple, 0.1);
+    border-radius: 16px;
+    border: 1px solid rgba($accent-purple, 0.3);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      background: rgba($accent-purple, 0.2);
+      box-shadow: 0 10px 20px rgba($accent-purple, 0.1);
+    }
+
+    &Number {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(
+        to right,
+        $accent-pink 0%,
+        $accent-purple-light 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    &Label {
+      color: $text-muted;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+// Form Section
+.formSection {
+  background: linear-gradient(to bottom, $card-bg-dark 0%, $darker-bg 100%);
+  padding: 6rem 1rem;
+}
+
+.formHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  .formTitle {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: $text-light;
+    font-weight: 700;
+  }
+
+  .formSubtitle {
+    font-size: 1.2rem;
+    color: $text-muted;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.formContainer {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  background: rgba($card-bg, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba($accent-pink, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+// Card Sections
+.cardSection {
+  padding: 6rem 1.5rem;
+  text-align: center;
+  background: $darker-bg;
+
+  &.darkBg {
+    background: $dark-bg;
+  }
+}
+
+.sectionHeader {
+  max-width: 800px;
+  margin: 0 auto 4rem;
+
+  .cardSectionHeading {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: $text-light;
+    font-weight: 700;
+  }
+
+  .sectionSubheading {
+    font-size: 1.2rem;
+    color: $text-muted;
+  }
+}
+
+.cardSectionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: $card-bg;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  border: 1px solid rgba($accent-purple, 0.2);
+  text-align: center;
+  height: 100%;
+
+  &:hover {
+    border-color: rgba($accent-pink, 0.4);
+    box-shadow: 0 15px 35px rgba($accent-pink, 0.15);
+  }
+
+  &Icon {
+    width: 60px;
+    height: 60px;
+    background: rgba($accent-pink, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: $accent-pink;
+    border: 1px solid rgba($accent-pink, 0.3);
+  }
+
+  &Title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: $text-light;
+    font-weight: 600;
+  }
+
+  &Description {
+    font-size: 1.1rem;
+    color: $text-muted;
     line-height: 1.6;
   }
 }
 
-.perkIcon {
-  font-size: 1.25rem;
-  margin-top: 0.125rem;
-  color: $pink-color;
-}
-
-.heroButtons {
-  display: flex;
-  gap: 1rem;
-
-  @media (max-width: $mobile) {
-    flex-direction: column;
-  }
-}
-
-.primaryButton,
-.secondaryButton {
-  padding: 0.875rem 1.75rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 1rem;
-  display: inline-block;
-  text-align: center;
-
-  @media (max-width: $mobile) {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-.primaryButton {
-  background: $pink-color;
-  color: $white;
-  border: 2px solid $pink-color;
-
-  &:hover {
-    background: darken($pink-color, 8%);
-    transform: translateY(-2px);
-    box-shadow: 0 0.25rem 0.75rem rgba($pink-color, 0.3);
-  }
-}
-
-.secondaryButton {
-  background: $white;
-  color: $pink-color;
-  border: 2px solid $pink-color;
-
-  &:hover {
-    background: $gray;
-    transform: translateY(-2px);
-    box-shadow: 0 0.25rem 0.75rem rgba($pink-color, 0.2);
-  }
-}
-
-// Stats Banner
-.statsBanner {
-  background: $pink-color;
-  color: $white;
-}
-
-.statsGrid {
-  display: flex;
-  justify-content: space-around;
-  gap: 2rem;
-
-  @media (max-width: $tablet) {
-    flex-direction: column;
-    gap: 2.5rem;
-  }
-}
-
-.statItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.statNumber {
-  font-size: 2.5rem;
-  font-weight: 800;
-  line-height: 1;
-  margin-bottom: 0.5rem;
-
-  @media (max-width: $tablet) {
-    font-size: 2rem;
-  }
-}
-
-.statLabel {
-  font-size: 1rem;
-  font-weight: 500;
-  opacity: 0.9;
-}
-
-// Features Section
-.section {
-  background: $white;
-}
-
-.sectionDark {
-  background: $gray;
-}
-
-.sectionTitle {
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 1rem;
-  font-weight: 800;
-
-  @media (max-width: $tablet) {
-    font-size: 2rem;
-  }
-}
-
-.sectionSubtitle {
-  text-align: center;
-  color: $dark-gray;
-  max-width: 700px;
-  margin: 0 auto 3rem;
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-.featuresGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
-  gap: 1.5rem;
-}
-
-.featureCard {
-  background: $white;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  border: 1px solid darken($gray, 5%);
-  text-align: center;
-
-  &:hover {
-    transform: translateY(-0.3125rem);
-    box-shadow: 0 0.5rem 1.5625rem rgba(0, 0, 0, 0.1);
-    border-color: $pink-color;
-  }
-}
-
-.featureIcon {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  color: $pink-color;
-}
-
-.featureCard h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.featureCard p {
-  color: $dark-gray;
-  font-size: 1rem;
-}
-
-// Benefits Section
-.benefitsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
-  gap: 1.5rem;
-}
-
-.benefitCard {
-  background: $white;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  border: 1px solid darken($gray, 5%);
-  text-align: center;
-
-  &:hover {
-    transform: translateY(-0.3125rem);
-    box-shadow: 0 0.5rem 1.5625rem rgba(0, 0, 0, 0.1);
-    border-color: $pink-color;
-  }
-}
-
-.benefitIcon {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  color: $pink-color;
-}
-
 // CTA Section
 .ctaSection {
-  background: $black;
-  color: $white;
+  background: linear-gradient(
+    135deg,
+    $accent-purple 0%,
+    darken($accent-purple, 10%) 100%
+  );
+  padding: 6rem 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      circle at 70% 30%,
+      rgba($accent-pink, 0.2) 0%,
+      transparent 40%
+    );
+    z-index: 1;
+  }
 }
 
-.ctaGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.ctaContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+
+  .ctaHeading {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: $text-light;
+    font-weight: 700;
+  }
+
+  .ctaText {
+    font-size: 1.3rem;
+    color: rgba($text-light, 0.9);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta {
+    background: $text-light;
+    color: $accent-purple;
+    border: none;
+    padding: 1.2rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: darken($text-light, 5%);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Footer
+.footer {
+  background: #0a0711;
+  padding: 4rem 1rem 2rem;
+  border-top: 1px solid rgba($accent-purple, 0.1);
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   gap: 3rem;
-  align-items: center;
+  margin-bottom: 3rem;
+}
 
-  @media (max-width: $desktop) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+.footerBrand {
+  flex: 1;
+  min-width: 250px;
+
+  .footerLogo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(
+      to right,
+      $accent-pink 0%,
+      $accent-purple-light 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .footerTagline {
+    color: $text-muted;
+    font-size: 1rem;
   }
 }
 
-.ctaTitle {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-  font-weight: 800;
+.footerLinks {
+  flex: 1;
+  min-width: 250px;
 
-  @media (max-width: $tablet) {
-    font-size: 2rem;
-  }
-}
-
-.ctaSubtitle {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  opacity: 0.9;
-  font-weight: 500;
-
-  @media (max-width: $tablet) {
+  .footerText {
+    color: $text-muted;
+    margin-bottom: 1.5rem;
     font-size: 1.1rem;
   }
 }
 
-.trustBadges {
+.socialLinks {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
+  gap: 1.5rem;
 
-  @media (max-width: $mobile) {
+  .socialLink {
+    color: $text-light;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba($text-light, 0.1);
+    display: flex;
+    align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: $pink-color;
+      color: $text-light;
+      transform: translateY(-3px);
+    }
   }
 }
 
-.trustItem {
-  background: rgba($white, 0.2);
-  padding: 0.5rem 1rem;
-  border-radius: 1.25rem;
-  font-size: 0.875rem;
+.footerLegal {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba($text-muted, 0.1);
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.375rem;
-  font-weight: 500;
+  gap: 1rem;
+  color: $text-muted;
+  font-size: 0.9rem;
+
+  .legalLinks {
+    display: flex;
+    gap: 1.5rem;
+
+    a {
+      color: $text-muted;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: $accent-pink;
+      }
+    }
+  }
 }
 
-// Utility Classes
-.text-center {
-  text-align: center;
-}
+// Responsive adjustments
+@media (max-width: 768px) {
+  .stats .stat {
+    min-width: 120px;
+    padding: 1rem;
 
-@media (max-width: $tablet) {
-  .mobile-text-center {
+    &Number {
+      font-size: 2rem;
+    }
+  }
+
+  .formContainer {
+    padding: 2rem 1.5rem;
+  }
+
+  .footerContent,
+  .footerLegal {
+    flex-direction: column;
     text-align: center;
   }
 
-  .mobile-stack {
-    flex-direction: column;
+  .socialLinks {
+    justify-content: center;
+  }
+}
+.categoryCard {
+  position: relative;
+  background: $card-bg;
+  border: 1px solid rgba($accent-purple, 0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  padding: 2rem;
+
+  &:hover {
+    border-color: rgba($accent-pink, 0.4);
+    box-shadow: 0 15px 35px rgba($accent-pink, 0.15);
+  }
+  .cardHoverContent {
+    ul {
+      li {
+        padding: 0.3rem 1rem;
+      }
+    }
+  }
+}
+
+.cardFront {
+  transition: opacity 0.3s ease;
+}
+
+.categoryCard:hover .cardFront {
+  opacity: 0.2;
+}
+
+.cardHoverContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+
+  h4 {
+    color: $text-light;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      padding: 0.4rem 1rem;
+      margin-bottom: 0.4rem;
+      border-radius: 8px;
+      color: $text-light;
+      transition: background 0.2s ease, color 0.2s ease;
+
+      &:hover {
+        background: rgba($accent-pink, 0.1);
+        color: $accent-pink;
+        cursor: pointer;
+      }
+    }
   }
 }
 .logoWrapper {
@@ -478,7 +592,7 @@ $desktop: 1024px;
   left: 6%;
   z-index: 1000;
 
-  @media (max-width: $tablet) {
+  @media (max-width: 780px) {
     display: none;
   }
 }
@@ -496,4 +610,13 @@ $desktop: 1024px;
   opacity: 0;
   transform: translateY(-20px);
   pointer-events: none;
+}
+
+.categoryCard:hover .cardHoverContent {
+  opacity: 1;
+  pointer-events: auto;
+  background-color: $dark-bg;
+}
+.backtoTop {
+  background-color: transparent;
 }

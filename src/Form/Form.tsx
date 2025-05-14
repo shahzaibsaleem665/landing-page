@@ -13,6 +13,13 @@ export default function Form() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState("");
 
+  const resetForm = () => {
+    setName("");
+    setEmail("");
+    setGender("");
+    setIsAdult(false);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -43,6 +50,7 @@ export default function Form() {
         submittedAt: Timestamp.now(),
       });
       setIsSuccess(true);
+      resetForm(); // Add this line
     } catch (err) {
       setError("Something went wrong. Please try again.");
       console.error("Error adding document: ", err);

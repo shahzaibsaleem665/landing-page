@@ -1,25 +1,23 @@
 @import "../variables.scss";
 
 .form {
-  max-width: 480px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
-  background: $white;
+  padding: 1.5rem;
+  background: transparent;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.05);
 
   &__title {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: $black;
+    color: $text-light;
     text-align: center;
   }
 
   &__subtitle {
-    font-size: 1rem;
-    color: $dark-gray;
+    font-size: 1.1rem;
+    color: $text-muted;
     margin-bottom: 2rem;
     text-align: center;
   }
@@ -39,30 +37,32 @@
   &__label {
     font-size: 0.875rem;
     font-weight: 500;
-    color: $black;
+    text-align: left;
+    color: $text-light;
   }
 
   &__input {
     padding: 1rem;
-    border: 1px solid lighten($dark-gray, 40%);
+    border: 1px solid rgba(248, 53, 160, 0.3);
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.2s ease;
-    background-color: $gray;
+    background-color: rgba(30, 21, 40, 0.6);
+    color: $text-light;
 
     &:focus {
       outline: none;
-      border-color: $pink-color;
-      box-shadow: 0 0 0 3px rgba($pink-color, 0.1);
+      border-color: $accent-pink;
+      box-shadow: 0 0 0 3px rgba(248, 53, 160, 0.2);
     }
 
     &:disabled {
-      background-color: darken($gray, 5%);
+      background-color: rgba(30, 21, 40, 0.4);
       cursor: not-allowed;
     }
 
     &::placeholder {
-      color: lighten($dark-gray, 20%);
+      color: rgba(244, 244, 244, 0.5);
     }
   }
 
@@ -76,7 +76,7 @@
   &__checkbox {
     width: 1rem;
     height: 1rem;
-    accent-color: $pink-color;
+    accent-color: $accent-pink;
     cursor: pointer;
 
     &:disabled {
@@ -86,27 +86,18 @@
 
   &__checkboxLabel {
     font-size: 0.875rem;
-    color: $black;
+    color: $text-light;
     cursor: pointer;
 
     &:disabled {
       cursor: not-allowed;
-    }
-
-    a {
-      color: $pink-color;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
     }
   }
 
   &__button {
     padding: 1rem;
     background-color: $pink-color;
-    color: $white;
+    color: $text-light;
     border: none;
     border-radius: 8px;
     font-size: 1rem;
@@ -117,12 +108,12 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    box-shadow: 0 2px 5px rgba($pink-color, 0.2);
+    box-shadow: 0 4px 15px rgba(248, 53, 160, 0.3);
 
     &:hover:not(:disabled) {
-      background-color: darken($pink-color, 10%);
+      background-color: darken($pink-color, 5%);
       transform: translateY(-1px);
-      box-shadow: 0 4px 8px rgba($pink-color, 0.3);
+      box-shadow: 0 6px 20px rgba(248, 53, 160, 0.4);
     }
 
     &:active:not(:disabled) {
@@ -132,7 +123,7 @@
     &:disabled {
       opacity: 0.7;
       cursor: not-allowed;
-      background-color: darken($pink-color, 5%);
+      background-color: darken($accent-pink, 5%);
     }
   }
 
@@ -141,12 +132,12 @@
     height: 1rem;
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
-    border-top-color: $white;
+    border-top-color: $text-light;
     animation: spin 1s ease-in-out infinite;
   }
 
   &__error {
-    color: #ef4444;
+    color: #ff6b6b;
     font-size: 0.875rem;
     text-align: center;
     margin-top: -0.5rem;
@@ -154,19 +145,10 @@
 
   &__privacy {
     font-size: 0.75rem;
-    color: $dark-gray;
+    color: $text-muted;
     text-align: center;
     margin-top: 2rem;
     line-height: 1.5;
-
-    a {
-      color: $pink-color;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
   }
 
   &__success {
@@ -181,26 +163,26 @@
   &__successIcon {
     width: 3rem;
     height: 3rem;
-    color: $pink-color;
+    color: $accent-pink;
   }
 
   &__successTitle {
     font-size: 1.5rem;
     font-weight: 700;
-    color: $pink-color;
+    color: $accent-pink;
   }
 
   &__successMessage {
     font-size: 1rem;
-    color: $black;
+    color: $text-light;
     line-height: 1.5;
   }
 
   &__successButton {
     margin-top: 1rem;
     padding: 0.75rem 1.5rem;
-    background-color: $pink-color;
-    color: $white;
+    background-color: $accent-pink;
+    color: $text-light;
     border: none;
     border-radius: 8px;
     font-size: 0.875rem;
@@ -209,8 +191,41 @@
     transition: all 0.2s ease;
 
     &:hover {
-      background-color: darken($pink-color, 10%);
+      background-color: darken($accent-pink, 5%);
     }
+  }
+
+  &__tooltip {
+    margin-left: 0.4rem;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.9rem;
+    color: $text-muted;
+  }
+
+  &__tooltipText {
+    visibility: hidden;
+    width: 220px;
+    background-color: #241b30;
+    color: $text-light;
+    text-align: left;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.75rem;
+    border: 1px solid rgba(248, 53, 160, 0.2);
+  }
+
+  &__tooltip:hover &__tooltipText {
+    visibility: visible;
+    opacity: 1;
   }
 }
 
@@ -218,35 +233,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-.form__tooltip {
-  margin-left: 0.4rem;
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 0.9rem;
-  color: #888;
-}
-
-.form__tooltipText {
-  visibility: hidden;
-  width: 220px;
-  background-color: #222;
-  color: #fff;
-  text-align: left;
-  border-radius: 6px;
-  padding: 8px;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%; /* Position above */
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.3s;
-  font-size: 0.75rem;
-}
-
-.form__tooltip:hover .form__tooltipText {
-  visibility: visible;
-  opacity: 1;
 }
