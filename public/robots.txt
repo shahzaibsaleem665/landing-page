@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.commonsecs.com
+
+# Sitemaps
+Sitemap: https://www.commonsecs.com/sitemap.xml

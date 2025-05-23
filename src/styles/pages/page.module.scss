@@ -1,5 +1,5 @@
 @import "../variables.scss";
-
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
 $dark-bg: #0e0b16;
 $darker-bg: #0a0711;
 $accent-pink: #f835a0;
@@ -13,7 +13,7 @@ $card-bg-dark: #1a1124;
 .landingPage {
   background: $dark-bg;
   color: $text-light;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: Tajawal;
   line-height: 1.6;
   overflow-x: hidden;
 
@@ -47,7 +47,7 @@ $card-bg-dark: #1a1124;
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 1.5rem;
-    background: linear-gradient(to right, #fff 10%, $pink-color 90%);
+    background: $pink-color;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
@@ -87,19 +87,15 @@ $card-bg-dark: #1a1124;
     bottom: 0;
     background: radial-gradient(
       circle at 20% 50%,
-      rgba($accent-pink, 0.15) 0%,
+      rgba($pink-color, 0.15) 0%,
       transparent 30%
     );
     z-index: 1;
   }
 
   .cta {
-    background: linear-gradient(
-      to right,
-      $pink-color 0%,
-      lighten($pink-color, 10%) 100%
-    );
-    color: #fff;
+    background: $pink-color;
+    color: $white;
     border: none;
     padding: 1rem 2.5rem;
     font-size: 1.2rem;
@@ -109,11 +105,11 @@ $card-bg-dark: #1a1124;
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    box-shadow: 0 4px 15px rgba($accent-pink, 0.4);
+    box-shadow: 0 4px 15px rgba($pink-color, 0.3);
     transition: all 0.3s ease;
 
     &:hover {
-      box-shadow: 0 6px 20px rgba($accent-pink, 0.6);
+      box-shadow: 0 6px 20px rgba($pink-color, 0.5);
       transform: translateY(-2px);
     }
 
@@ -124,13 +120,6 @@ $card-bg-dark: #1a1124;
     &:hover &Icon {
       transform: translateY(2px);
     }
-  }
-
-  .ctaSubtext {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: rgba($text-light, 0.7);
-    font-style: italic;
   }
 }
 
@@ -156,9 +145,7 @@ $card-bg-dark: #1a1124;
     font-size: 1.2rem;
     color: $text-muted;
     margin-bottom: 3rem;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
   }
 
   &Content {
@@ -600,16 +587,6 @@ $card-bg-dark: #1a1124;
 .logo {
   height: 5.5rem; // adjust size as needed
   width: auto;
-}
-.logoVisible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.logoHidden {
-  opacity: 0;
-  transform: translateY(-20px);
-  pointer-events: none;
 }
 
 .categoryCard:hover .cardHoverContent {

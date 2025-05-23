@@ -28,7 +28,7 @@ import { useEffect, useState } from "react";
 import { db } from "@/util/firebase";
 import firebase from "firebase/compat/app";
 import Image from "next/image";
-import logo from "../images/logo.png";
+import logo from "../images/logo.svg";
 import BackToTop from "@/components/BackToTop";
 
 const LandingPage = () => {
@@ -95,13 +95,19 @@ const LandingPage = () => {
     <>
       <Head>
         <title>Common Secs | Connect in Private Chatrooms</title>
+
         <meta
           name="description"
           content="Join the ultimate adult-only community. Explore fetishes, BDSM, FWB, and more in private chatrooms. Secure, verified, and respectful."
         />
+
         <meta
           name="keywords"
-          content="adult chat, BDSM, fetishes, private chatrooms, 18+ verified, Common Secs"
+          content="adult chat, BDSM chatrooms, fetishes community, private chatrooms, 18+ verified chats, secure adult platform, adult-only community, FWB chatrooms, exclusive online chats, respectful adult connections, Common Secs chat, adult chat network, online BDSM discussions, private fetish communities, Australian dating app, alternative dating app, safe adult dating, open-minded community, adult chat app Australia, online dating for adults, private message platform, discreet online dating, exclusive adult chat rooms, adult social networking, open-minded dating, secure online connections, alternative lifestyle chats, LGBTQ+ private rooms"
+        />
+        <meta
+          name="google-site-verification"
+          content="lFgs7SkVAWxPwqqXS3eac901aAGMbEPoV8Ue5HGOAOQ"
         />
         <meta name="author" content="Common Secs" />
       </Head>
@@ -144,7 +150,6 @@ const LandingPage = () => {
                 Join the Beta Now
                 <FaArrowDown className={styles.ctaIcon} />
               </motion.button>
-              <p className={styles.ctaSubtext}>Limited spots available</p>
             </motion.div>
           </div>
           <div className={styles.heroPattern}></div>
@@ -153,7 +158,9 @@ const LandingPage = () => {
         {/* Stats Section */}
         <section className={styles.stats}>
           <div className={styles.statsContainer}>
-            <h2 className={styles.statsHeading}>Join the Movement</h2>
+            <h2 className={styles.statsHeading}>
+              Join the New Dating experience
+            </h2>
             <p className={styles.statsSubheading}>
               Be part of our growing community of open-minded individuals
             </p>
@@ -200,7 +207,7 @@ const LandingPage = () => {
           <div className={styles.cardSectionGrid}>
             <motion.div className={styles.card} whileHover={{ y: -5 }}>
               <div className={styles.cardIcon}>
-                <FaCrown size={24} />
+                <FaDoorOpen size={24} />
               </div>
               <h3 className={styles.cardTitle}>Exclusive Early Access</h3>
               <p className={styles.cardDescription}>
@@ -219,11 +226,11 @@ const LandingPage = () => {
             </motion.div>
             <motion.div className={styles.card} whileHover={{ y: -5 }}>
               <div className={styles.cardIcon}>
-                <FaDoorOpen size={24} />
+                <FaCrown size={24} />
               </div>
-              <h3 className={styles.cardTitle}>Beta Room Entry</h3>
+              <h3 className={styles.cardTitle}>Free membership</h3>
               <p className={styles.cardDescription}>
-                Access limited-edition fetish rooms before anyone else.
+                Enjoy 2-months free premium membership when join Beta.
               </p>
             </motion.div>
             <motion.div className={styles.card} whileHover={{ y: -5 }}>
@@ -426,9 +433,7 @@ const LandingPage = () => {
             </motion.button>
           </div>
         </section>
-        <section className={styles.backtoTop}>
-          <BackToTop />
-        </section>
+        <BackToTop />
         {/* Footer */}
         <footer className={styles.footer}>
           <div className={styles.footerContent}>
@@ -464,16 +469,6 @@ const LandingPage = () => {
                 </a>
               </div>
             </div>
-          </div>
-          <div className={styles.footerLegal}>
-            <p style={{ margin: "auto" }}>
-              © {new Date().getFullYear()} Common Secs. All rights reserved.
-            </p>
-            {/* <div className={styles.legalLinks}>
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
-              <a href="#">Community Guidelines</a>
-            </div> */}
           </div>
         </footer>
       </main>
